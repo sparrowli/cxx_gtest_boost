@@ -13,7 +13,7 @@ GTEST_LIB=../test
 spec:
 	${CXX} -std=c++14 -isystem ${GTEST_DIR}/include/ \
             -isystem ${GMOCK_DIR}/include/ \
-            -pthread process.cc sampled_function_spec.cc sampled_function.cc sender_report_spec.cc sender_report.cc factorial_spec.cc factorial.cc \
+            -pthread process_forecast_spec.cc process_forecast.cc process.cc sampled_function_spec.cc sampled_function.cc sender_report_spec.cc sender_report.cc factorial_spec.cc factorial.cc \
             ${GTEST_LIB}/libgmock.a \
             -o s_spec
 

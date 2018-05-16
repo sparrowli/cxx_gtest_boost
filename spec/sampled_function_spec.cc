@@ -58,12 +58,14 @@ TEST(SampledFunction, normalized) {
 											  value /= sum;
 											} );
 	EXPECT_EQ(1.0/257, probability_mass_function.function_[5]);
+	/*
 	for (int i = 0; i < probability_mass_function.size(); ++i) {
 
 		printf("index=%d|value=%f|mid_point=%f\n", i,
 				probability_mass_function.function_[i],
 				probability_mass_function.from_bin_mid(i));
 	}
+	*/
 	
 	EXPECT_EQ(1000000, BIG);
 }
