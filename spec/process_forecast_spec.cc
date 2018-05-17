@@ -20,6 +20,11 @@ class ProcessForecastTickSpec : public testing::Test {
 		tick_forecast_ = new ProcessForecastTick(.001 * TICK_LENGTH,
 				*process_,
 				MAX_ARRIVALS_PER_TICK);
+		one_forecast_ = new ProcessForecastInterval(.001 * TICK_LENGTH,
+				*process_,
+				MAX_ARRIVALS_PER_TICK,
+				1);
+			 	
 
 
 	}
@@ -27,15 +32,22 @@ class ProcessForecastTickSpec : public testing::Test {
 	virtual void TearDown() {
 		delete process_;
 		delete tick_forecast_;
+		delete one_forecast_;
 	}
 
 
 	Process* process_;
 	ProcessForecastTick* tick_forecast_;
+  ProcessForecastInterval* one_forecast_; 
 };
 
 TEST_F(ProcessForecastTickSpec, constructor) {
 	EXPECT_EQ(NUM_BINS + 1, tick_forecast_->row());
 	EXPECT_EQ(MAX_ARRIVALS_PER_TICK  + 1, tick_forecast_->column());
+}
+
+TEST_F(ProcessForecastTickSpec, intervalForecastCor) {
+	EXPECT_EQ(NUM_BINS + 1, one_forecast_->row());
+	EXPECT_EQ(MAX_ARRIVALS_PER_TICK, one_forecast_->column());
 }
 }  // namespace
