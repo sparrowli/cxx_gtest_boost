@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option optimize_for = LITE_RUNTIME;
+package Sprout;
+
+message DeliveryForecast {
+  uint64 received_or_lost_count = 1;
+  uint64 time = 2;
+  repeated uint32 counts = 3 [packed=true];
+  uint64 throwaway = 4;
+}
+

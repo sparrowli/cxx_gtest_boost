@@ -111,6 +111,18 @@ ProcessForecastInterval::ProcessForecastInterval(const double tick_time,
 	}
 }
 
+ProcessForecastInterval::ProcessForecastInterval(
+            const Sprout::ProcessForecastInterval& stored_model)
+  : count_probability_() {
+  for (int i = 0; i < stored_model.count_probabilities_size(); ++i) {
+		std::vector<double> this_component_count_probability;
+		for (int j = 0; j < stored_model.count_probabilities(i).count_probability_size(); ++j) {
+			this_component_count_probability.push_back(
+            stored_model.count_probabilities(i).count_probability(j));
+		}
+		count_probability_.push_back(this_component_count_probability);
+	}
+}
 
 // exact same routine as for ProcessForecastTick!
 double ProcessForecastInterval::probability(const Process& ensemble,

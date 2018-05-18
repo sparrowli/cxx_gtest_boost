@@ -28,6 +28,8 @@ class ProcessForecastInterval {
 			   const Process& example,
 				 const unsigned int tick_upper_limit,
 				 const unsigned int num_ticks);
+
+	ProcessForecastInterval(const Sprout::ProcessForecastInterval &stored_model);
 	Sprout::ProcessForecastInterval to_protobuf(void) const;
 	 size_t row(void) const { return count_probability_.size(); }
 	 size_t column(void) const { return count_probability_[0].size(); }
